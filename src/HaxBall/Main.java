@@ -1,4 +1,4 @@
-package Cabezones;
+package HaxBall;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         String css = getClass().getResource("style.css").toExternalForm();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Cabezones World Cup");
+        primaryStage.setTitle("Haxball World Cup");
         Scene scene = new Scene(root, 1345, 650);
         scene.getStylesheets().add(css);
         primaryStage.setScene(scene);

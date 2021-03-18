@@ -1,7 +1,3 @@
-#field {
-    -fx-background-image: url("Resources//football_field.png");
-}
-
 #marcador {
     -fx-background-color: #202020;
     -fx-background-radius: 30px;

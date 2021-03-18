@@ -3,10 +3,31 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\src\Cabezones\Controller.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\Cabezones\Main.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\Cabezones\Players\BluePlayer.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\Cabezones\sample.fxml">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
             </Attribute>
           </value>
         </entry>

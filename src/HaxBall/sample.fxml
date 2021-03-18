@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<GridPane fx:id="test" alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HaxBall.Controller">
+   <children>
+         <AnchorPane id="field" prefHeight="710.0" prefWidth="1625.0">
+            <Canvas fx:id="mainCanvas" height="650" width="1345.0" />
+            <children>
+               <AnchorPane id="marcador" layoutX="497.0" layoutY="-60.0" prefHeight="120.0" prefWidth="341.0">
+                  <children>
+                  <AnchorPane id="rojo" layoutX="20.0" layoutY="80.0" prefHeight="26.0" prefWidth="26.0" />
+                  <AnchorPane id="azul" layoutX="115.0" layoutY="80.0" prefHeight="26.0" prefWidth="26.0" />
+                  <Label id="leftscore" fx:id="leftscore" layoutX="54.0" layoutY="76.0" text="0" />
+                  <Label id="guion" layoutX="75.0" layoutY="76.0" text="-" />
+                  <Label id="rightscore" fx:id="rightscore" layoutX="92.0" layoutY="76.0" text="0" />
+                  <Label id="timer" fx:id="timer" contentDisplay="TEXT_ONLY" graphicTextGap="8.0" layoutX="256.0" layoutY="76.0" lineSpacing="6.0" text="0 : 00" />
+               </children>
+            </AnchorPane>
+         </children>
+         </AnchorPane>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
