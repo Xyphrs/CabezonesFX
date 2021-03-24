@@ -1,6 +1,7 @@
 package HaxBall.Players;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 
 public class RedPlayer {
 
@@ -9,7 +10,7 @@ public class RedPlayer {
     private int dirX, dirY;
 
     public RedPlayer(Image image) {
-        this.posX = 1200;
+        this.posX = 945;
         this.posY = 300;
         this.velX = 1.0;
         this.velY = 1.0;
@@ -22,22 +23,20 @@ public class RedPlayer {
         gc.clearRect(posX,posY, width, height);
     }
 
-    public void move() {
-        if(dirX == 1) {
-            posX += velX;
-            if(posX>=1345-width) dirX = (-1)*dirX;
-        }else {
-            posX -= velX;
-            if(posX<=0) dirX = (-1)*dirX;
-        }
-        if(dirY == 1){
-            posY += velY;
-            if(posY>=650-height) dirY = (-1)*dirY;
-        }
-        else {
-            posY -= velY;
-            if(posY<=0) dirY = (-1)*dirY;
-        }
+    public void setX(double x) {
+        posX = x;
+    }
+
+    public void setY(double y) {
+        posY = y;
+    }
+
+    public double getPosX() {
+        return posX;
+    }
+
+    public double getPosY() {
+        return posY;
     }
 
     public void render(GraphicsContext gc) {

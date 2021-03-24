@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class BluePlayer{
@@ -40,6 +41,7 @@ public class BluePlayer{
     public double getPosY() {
         return posY;
     }
+
     public void render(GraphicsContext gc) {
         gc.drawImage(image, posX, posY);
     }
@@ -48,15 +50,6 @@ public class BluePlayer{
         image = i;
         width = image.getWidth();
         height = image.getHeight();
-    }
-
-    public void move(KeyEvent keyEvent) {
-        switch (keyEvent.getCode()) {
-            case UP -> setX(getPosX() + 4);
-            case RIGHT -> setY(getPosY() + 4);
-            case DOWN -> setX(getPosX() - 4);
-            case LEFT -> setY(getPosY() - 4);
-        }
     }
 }
 
