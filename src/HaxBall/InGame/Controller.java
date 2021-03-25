@@ -43,16 +43,16 @@ public class Controller implements Initializable {
                   float redplayer_bottom = (float) (redPlayer.getPosY() + redPlayer.getBoundary().getHeight());
                   float blueplayer_right = (float) (bluePlayer.getPosX() + bluePlayer.getBoundary().getWidth());
                   float redplayer_right = (float) (redPlayer.getPosX() + redPlayer.getBoundary().getWidth());
-                  float b_collision = (float) (redplayer_bottom - bluePlayer.getPosY());
-                  float t_collision = (float) (blueplayer_bottom - redPlayer.getPosY());
-                  float l_collision = (float) (blueplayer_right - redPlayer.getPosX());
-                  float r_collision = (float) (redplayer_right - bluePlayer.getPosX());
+                  float bottom_collision = (float) (redplayer_bottom - bluePlayer.getPosY());
+                  float top_collision = (float) (blueplayer_bottom - redPlayer.getPosY());
+                  float left_collision = (float) (blueplayer_right - redPlayer.getPosX());
+                  float right_collision = (float) (redplayer_right - bluePlayer.getPosX());
 
                   gc.drawImage(fons, 0,0,1365,650);
                   bluePlayer.render(gc);
                   redPlayer.render(gc);
                   if (bluePlayer.getBoundary().intersects(redPlayer.getBoundary())){
-                        if (t_collision < b_collision && t_collision < l_collision && t_collision < r_collision ) {
+                        if (top_collision < bottom_collision && top_collision < left_collision && top_collision < right_collision ) {
                               System.out.println("TOP");
                               bluePlayer.setDOWN(0);
                               bluePlayer.setUP(6);
@@ -65,7 +65,7 @@ public class Controller implements Initializable {
                               redPlayer.setLEFT(6);
                         }
 
-                        if (b_collision < t_collision && b_collision < l_collision && b_collision < r_collision) {
+                        if (bottom_collision < top_collision && bottom_collision < left_collision && bottom_collision < right_collision) {
                               System.out.println("BOTTOM");
                               bluePlayer.setDOWN(6);
                               bluePlayer.setUP(0);
@@ -78,7 +78,7 @@ public class Controller implements Initializable {
                               redPlayer.setLEFT(6);
                         }
 
-                        if (l_collision < r_collision && l_collision < t_collision && l_collision < b_collision) {
+                        if (left_collision < right_collision && left_collision < top_collision && left_collision < bottom_collision) {
                               System.out.println("LEFT");
                               bluePlayer.setDOWN(6);
                               bluePlayer.setUP(6);
@@ -91,7 +91,7 @@ public class Controller implements Initializable {
                               redPlayer.setLEFT(0);
                         }
 
-                        if (r_collision < l_collision && r_collision < t_collision && r_collision < b_collision ) {
+                        if (right_collision < left_collision && right_collision < top_collision && right_collision < bottom_collision ) {
                               System.out.println("RIGHT");
                               bluePlayer.setDOWN(6);
                               bluePlayer.setUP(6);
