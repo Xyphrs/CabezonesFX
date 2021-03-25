@@ -11,20 +11,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
-import javafx.scene.media.*;
-
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
       private static final int STARTTIME = 30;
       private Timeline timeline;
+      private Scene field;
       private final IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
       @FXML private Label leftscore, rightscore, timer;
       static RedPlayer redPlayer;
@@ -36,11 +38,82 @@ public class Controller implements Initializable {
       Timeline start = new Timeline(new KeyFrame(Duration.seconds(0.0005), new EventHandler<>() {
             @Override
             public void handle(ActionEvent event) {
-                  redPlayer.clear(gc);
-                  bluePlayer.clear(gc);
+
+                  float blueplayer_bottom = (float) (bluePlayer.getPosY() + bluePlayer.getBoundary().getHeight());
+                  float redplayer_bottom = (float) (redPlayer.getPosY() + redPlayer.getBoundary().getHeight());
+                  float blueplayer_right = (float) (bluePlayer.getPosX() + bluePlayer.getBoundary().getWidth());
+                  float redplayer_right = (float) (redPlayer.getPosX() + redPlayer.getBoundary().getWidth());
+                  float b_collision = (float) (redplayer_bottom - bluePlayer.getPosY());
+                  float t_collision = (float) (blueplayer_bottom - redPlayer.getPosY());
+                  float l_collision = (float) (blueplayer_right - redPlayer.getPosX());
+                  float r_collision = (float) (redplayer_right - bluePlayer.getPosX());
+
                   gc.drawImage(fons, 0,0,1365,650);
                   bluePlayer.render(gc);
                   redPlayer.render(gc);
+                  if (bluePlayer.getBoundary().intersects(redPlayer.getBoundary())){
+                        if (t_collision < b_collision && t_collision < l_collision && t_collision < r_collision ) {
+                              System.out.println("TOP");
+                              bluePlayer.setDOWN(0);
+                              bluePlayer.setUP(6);
+                              bluePlayer.setRIGHT(6);
+                              bluePlayer.setLEFT(6);
+
+                              redPlayer.setDOWN(6);
+                              redPlayer.setUP(0);
+                              redPlayer.setRIGHT(6);
+                              redPlayer.setLEFT(6);
+                        }
+
+                        if (b_collision < t_collision && b_collision < l_collision && b_collision < r_collision) {
+                              System.out.println("BOTTOM");
+                              bluePlayer.setDOWN(6);
+                              bluePlayer.setUP(0);
+                              bluePlayer.setRIGHT(6);
+                              bluePlayer.setLEFT(6);
+
+                              redPlayer.setDOWN(0);
+                              redPlayer.setUP(6);
+                              redPlayer.setRIGHT(6);
+                              redPlayer.setLEFT(6);
+                        }
+
+                        if (l_collision < r_collision && l_collision < t_collision && l_collision < b_collision) {
+                              System.out.println("LEFT");
+                              bluePlayer.setDOWN(6);
+                              bluePlayer.setUP(6);
+                              bluePlayer.setRIGHT(0);
+                              bluePlayer.setLEFT(6);
+
+                              redPlayer.setDOWN(6);
+                              redPlayer.setUP(6);
+                              redPlayer.setRIGHT(6);
+                              redPlayer.setLEFT(0);
+                        }
+
+                        if (r_collision < l_collision && r_collision < t_collision && r_collision < b_collision ) {
+                              System.out.println("RIGHT");
+                              bluePlayer.setDOWN(6);
+                              bluePlayer.setUP(6);
+                              bluePlayer.setRIGHT(6);
+                              bluePlayer.setLEFT(0);
+
+                              redPlayer.setDOWN(6);
+                              redPlayer.setUP(6);
+                              redPlayer.setRIGHT(0);
+                              redPlayer.setLEFT(6);
+                        }
+                  } else {
+                        bluePlayer.setDOWN(6);
+                        bluePlayer.setUP(6);
+                        bluePlayer.setRIGHT(6);
+                        bluePlayer.setLEFT(6);
+
+                        redPlayer.setDOWN(6);
+                        redPlayer.setUP(6);
+                        redPlayer.setRIGHT(6);
+                        redPlayer.setLEFT(6);
+                  }
             }
       }));
 
@@ -71,5 +144,19 @@ public class Controller implements Initializable {
             timeline.setCycleCount(Animation.INDEFINITE); // repeat over and over again
             timeSeconds.set(STARTTIME);
             timeline.play();
+      }
+
+      public void setScene(Scene sc) {
+            field = sc;
+            final List<KeyCode> acceptedCodes = Arrays.asList(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
+            final Set<KeyCode> codes = new HashSet<>();
+            field.setOnKeyReleased(e -> codes.clear());
+            field.setOnKeyPressed(e -> {
+                  if (acceptedCodes.contains(e.getCode())) {
+                        codes.add(e.getCode());
+                        bluePlayer.move(codes);
+                        redPlayer.move(codes);
+                  }
+            });
       }
 }

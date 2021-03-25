@@ -3,49 +3,51 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
-public class RedPlayer {
-
-    private Image image;
-    private double posX, posY, velX, velY, width, height;
-    private int dirX, dirY;
+public class RedPlayer extends Sprite {
+    private int UP = 6;
+    private int DOWN = 6;
+    private int LEFT = 6;
+    private int RIGHT = 6;
 
     public RedPlayer(Image image) {
-        this.posX = 945;
-        this.posY = 300;
-        this.velX = 1.0;
-        this.velY = 1.0;
-        this.dirX = 1;
-        this.dirY = 1;
-        setImage(image);
+        super(image);
+        setX(905);
+        setY(300);
     }
 
-    public void clear(GraphicsContext gc) {
-        gc.clearRect(posX,posY, width, height);
+    public void setUP(int UP) {
+        this.UP = UP;
     }
 
-    public void setX(double x) {
-        posX = x;
+    public void setDOWN(int DOWN) {
+        this.DOWN = DOWN;
     }
 
-    public void setY(double y) {
-        posY = y;
+    public void setLEFT(int LEFT) {
+        this.LEFT = LEFT;
     }
 
-    public double getPosX() {
-        return posX;
+    public void setRIGHT(int RIGHT) {
+        this.RIGHT = RIGHT;
     }
 
-    public double getPosY() {
-        return posY;
-    }
-
-    public void render(GraphicsContext gc) {
-        gc.drawImage(image, posX, posY);
-    }
-
-    public void setImage(Image i) {
-        image = i;
-        width = image.getWidth();
-        height = image.getHeight();
+    public void move(Set<KeyCode> codes) {
+        if (codes.contains(KeyCode.W)) {
+            if (getPosY() - 3 >= 86) {
+                setY(getPosY() - UP);
+            }
+        } else if (codes.contains(KeyCode.S)) {
+            if (getPosY() + 53 <= 600) {
+                setY(getPosY() + DOWN);
+            }
+        } else if (codes.contains(KeyCode.A )) {
+            if (getPosX() - 3 >= 116) {
+                setX(getPosX() - LEFT);
+            }
+        } else if (codes.contains(KeyCode.D)) {
+            if (getPosX() + 53 <= 1240) {
+                setX(getPosX() + RIGHT);
+            }
+        }
     }
 }

@@ -38,6 +38,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\HaxBall\InGame\Controller.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\HaxBall\InGame\Main.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\HaxBall\Main.java">
           <value>
             <Attribute>
@@ -45,7 +59,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\HaxBall\Menu\Menu.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\HaxBall\Players\BluePlayer.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\HaxBall\Players\Sprite.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
