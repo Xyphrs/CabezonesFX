@@ -16,7 +16,7 @@ public class BluePlayer extends Sprite {
     public BluePlayer(Image image) {
         super(image);
         setX(400);
-        setY(300);
+        setY(315);
     }
 
     public void setUP(int UP) {

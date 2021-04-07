@@ -12,7 +12,7 @@ public class RedPlayer extends Sprite {
     public RedPlayer(Image image) {
         super(image);
         setX(905);
-        setY(300);
+        setY(315);
     }
 
     public void setUP(int UP) {
