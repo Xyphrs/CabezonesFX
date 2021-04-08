@@ -40,7 +40,7 @@ public class RedPlayer extends Sprite {
             if (getPosY() + 53 <= 600) {
                 setY(getPosY() + DOWN);
             }
-        } else if (codes.contains(KeyCode.A )) {
+        } else if (codes.contains(KeyCode.A)) {
             if (getPosX() - 3 >= 116) {
                 setX(getPosX() - LEFT);
             }

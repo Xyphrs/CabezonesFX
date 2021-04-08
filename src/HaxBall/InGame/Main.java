@@ -18,10 +18,10 @@ import java.util.Set;
 public class Main extends Application {
 
     @Override
-    public void start(Stage fieldStage) throws Exception{
+    public void start(Stage fieldStage) throws Exception {
         Controller controller = new Controller();
-        String css = getClass().getResource("style.css").toExternalForm();
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        String css = Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
         fieldStage.setTitle("Haxball World Cup");
         Scene field = new Scene(root, 1345, 650);
         field.getStylesheets().add(css);

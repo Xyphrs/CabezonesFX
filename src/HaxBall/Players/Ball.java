@@ -1,12 +1,13 @@
 package HaxBall.Players;
 
+import HaxBall.InGame.Controller;
+import javafx.animation.Timeline;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
 public class Ball extends Sprite {
-    private int UP = 6;
-    private int DOWN = 6;
-    private int LEFT = 6;
-    private int RIGHT = 6;
+    int redgoal = 0;
+    int bluegoal = 0;
 
     public Ball(Image image) {
         super(image);
@@ -14,23 +15,11 @@ public class Ball extends Sprite {
         setY(315);
     }
 
-    public void setUP(int UP) {
-        this.UP = UP;
-    }
-
-    public void setDOWN(int DOWN) {
-        this.DOWN = DOWN;
-    }
-
-    public void setLEFT(int LEFT) {
-        this.LEFT = LEFT;
-    }
-
-    public void setRIGHT(int RIGHT) {
-        this.RIGHT = RIGHT;
-    }
-
-    public void move(String codes) {
+    public void move(String codes, Label left, Label right, BluePlayer bluePlayer, RedPlayer redPlayer, Timeline start) throws InterruptedException {
+        int RIGHT = 6;
+        int LEFT = 6;
+        int DOWN = 6;
+        int UP = 6;
         if (codes.contains("BLUE UP")) {
             setY(getPosY() + UP);
         } else if (codes.contains("BLUE DOWN")) {
@@ -51,9 +40,38 @@ public class Ball extends Sprite {
             setX(getPosX() - RIGHT);
         }
 
-        if (getPosX() < 116 || getPosX() > 1240 || getPosY() < 86|| getPosY() > 600) {
+        if (getPosX() < 72 && getPosY() > 240 && getPosY() < 400) {
             setX(657);
             setY(315);
+            bluePlayer.setX(400);
+            bluePlayer.setY(315);
+            redPlayer.setX(905);
+            redPlayer.setY(315);
+            redgoal++;
+            right.setText(String.valueOf(redgoal));
+        } else if (getPosX() > 1239 && getPosY() > 240 && getPosY() < 400) {
+            setX(657);
+            setY(315);
+            bluePlayer.setX(400);
+            bluePlayer.setY(315);
+            redPlayer.setX(905);
+            redPlayer.setY(315);
+            bluegoal++;
+            left.setText(String.valueOf(bluegoal));
+            start.stop();
+            Thread.sleep(2000);
+            start.play();
+
+        }
+
+        if (getPosX() > 1240) {
+            setX(1100);
+        } else if (getPosY() < 41) {
+            setY(150);
+        } else if (getPosX() < 71) {
+            setX(190);
+        } else if (getPosY() > 590) {
+            setY(500);
         }
     }
 }
