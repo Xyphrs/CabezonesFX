@@ -1,14 +1,13 @@
 package HaxBall.InGame;
 
-import HaxBall.Players.BluePlayer;
-import HaxBall.Players.RedPlayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.Arrays;
 import java.util.HashSet;

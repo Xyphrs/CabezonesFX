@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HaxBall.Endscreen.Endscreen">
+   <Button layoutX="254.0" layoutY="320.0" mnemonicParsing="false" text="Salir del Juego" />
+   <Label id="left" fx:id="left" layoutX="228.0" layoutY="43.0" text="0">
+      <font>
+         <Font size="48.0" />
+      </font>
+   </Label>
+   <Label id="right" fx:id="right" layoutX="347.0" layoutY="43.0" text="0">
+      <font>
+         <Font size="48.0" />
+      </font>
+   </Label>
+</AnchorPane>

@@ -58,10 +58,6 @@ public class Ball extends Sprite {
             redPlayer.setY(315);
             bluegoal++;
             left.setText(String.valueOf(bluegoal));
-            start.stop();
-            Thread.sleep(2000);
-            start.play();
-
         }
 
         if (getPosX() > 1240) {

@@ -1,5 +1,6 @@
 package HaxBall.InGame;
 
+import HaxBall.Endscreen.Endscreen;
 import HaxBall.Menu.Menu;
 import HaxBall.Players.Ball;
 import HaxBall.Players.BluePlayer;
@@ -9,7 +10,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -18,22 +18,26 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class Controller implements Initializable {
-    private static final int STARTTIME = 40;
+    private static final int STARTTIME = 5;
     private Timeline timeline;
     private final IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
-    @FXML
-    private Label leftscore, rightscore, timer;
+    @FXML private Label leftscore, rightscore, timer;
     static RedPlayer redPlayer;
     static BluePlayer bluePlayer;
     static Ball ball;
-    @FXML
-    Canvas mainCanvas;
+    String pitido = "pitido.mp3";
+    Endscreen endscreen = new Endscreen();
+    @FXML Canvas mainCanvas;
     GraphicsContext gc;
     private Image fons;
 
@@ -65,20 +69,30 @@ public class Controller implements Initializable {
         startTime();
     }
 
-    private void updateTime() {
+    private void updateTime() throws IOException {
         int seconds = timeSeconds.get();
 
         if (seconds == 0) {
             timeline.stop();
             start.stop();
+            endscreen.show(leftscore, rightscore);
         } else {
             timeSeconds.set(seconds - 1);
         }
     }
 
     public void startTime() {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), evt -> updateTime()));
-        timeline.setCycleCount(Animation.INDEFINITE); // repeat over and over again
+        Media sound = new Media(new File(pitido).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), evt -> {
+            try {
+                updateTime();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
         timeSeconds.set(STARTTIME);
         timeline.play();
     }

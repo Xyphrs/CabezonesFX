@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\HaxBall\Endscreen\Endscreen.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\HaxBall\InGame\Controller.java">
           <value>
             <Attribute>
@@ -49,6 +56,13 @@
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\HaxBall\InGame\sample.fxml">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
             </Attribute>
           </value>
         </entry>
