@@ -28,7 +28,7 @@ import java.net.URL;
 import java.util.*;
 
 public class Controller implements Initializable {
-    private static final int STARTTIME = 5;
+    private static final int STARTTIME = 90;
     private Timeline timeline;
     private final IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
     @FXML private Label leftscore, rightscore, timer;
@@ -57,7 +57,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Menu.menu("Bienvenido", "Bienvenido al tres en raya!");
+        Menu.menu();
         redPlayer = new RedPlayer(new Image("HaxBall/Resources/red_player.png"));
         bluePlayer = new BluePlayer(new Image("HaxBall/Resources/blue_player.png"));
         ball = new Ball(new Image("HaxBall/Resources/ball.png"));

@@ -18,8 +18,8 @@ import java.io.File;
 
 public class Endscreen {
     @FXML Label left, right;
+    public Stage window = new Stage();
     public void show(Label leftscore, Label rightscore) {
-        Stage window = new Stage();
         String musicFile = "champions.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -41,6 +41,7 @@ public class Endscreen {
         closeButton.setOnAction(e -> {
             window.close();
             mediaPlayer.stop();
+
         });
 
         BackgroundImage background = new BackgroundImage(new Image("HaxBall/Resources/imagenfinal.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
